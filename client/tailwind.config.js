@@ -14,5 +14,8 @@ export default {
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: ["emerald", "luxury", "light", "dark", "wireframe", "cupcake", "dim"],
+  },
 }
 

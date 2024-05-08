@@ -10,9 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
+    "axios": "^1.6.8",
+    "date-fns": "^3.6.0",
+    "firebase": "^10.11.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-awesome-reveal": "^4.2.10",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.0"
+    "react-helmet-async": "^2.0.5",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.23.0",
+    "react-simple-typewriter": "^5.0.1",
+    "react-tabs": "^6.0.2",
+    "react-toastify": "^10.0.5",
+    "react-tooltip": "^5.26.4",
+    "sweetalert2": "^11.10.8",
+    "swiper": "^11.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
