@@ -83,7 +83,7 @@ const Navbar = () => {
 
 
 
-        <div className='dropdown dropdown-end z-50'>
+        <div className='z-50'>
           {
             user ?
 
