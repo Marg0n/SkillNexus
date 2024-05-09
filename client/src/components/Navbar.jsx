@@ -11,6 +11,9 @@ const Navbar = () => {
 
   const { loggedOut, user } = useAuth();
   const [theme, setTheme] = useState('cupcake');
+  // State to track whether the dropdown is open or closed
+  const [dropdown, setDropdown] = useState(false);
+
 
   const list = <>
     <li>
@@ -25,10 +28,19 @@ const Navbar = () => {
     <li>
       <div>Bid Requests</div>
     </li>
-    <li className='mt-2'>
-      <button className='bg-gray-200 block text-center'>Logout</button>
+    <li
+      className="rounded-xl p-2 m-2 text-right"
+      onClick={loggedOut}
+    >
+      <button className='bg-gray-300 hover:bg-neutral hover:text-white block text-center'>Logout</button>
     </li>
   </>
+
+
+  // Function to toggle the dropdown state
+  const toggleDropdown = () => {
+    setDropdown(!dropdown);
+  };
 
   // set theme
   useEffect(() => {
@@ -44,6 +56,7 @@ const Navbar = () => {
       setTheme('cupcake');
     }
   }
+
 
 
   return (
@@ -65,7 +78,7 @@ const Navbar = () => {
           {/* <li>
               <div>Login</div>
           </li> */}
-         
+
         </ul>
 
 
@@ -74,16 +87,17 @@ const Navbar = () => {
           {
             user ?
 
-              <div className="dropdown dropdown-end">
+              <div className="dropdown dropdown-end" onClick={toggleDropdown}>
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle btn-outline avatar animate-pulse">
+                  className="btn btn-ghost btn-circle btn-outline avatar animate-pulse hover:animate-none">
                   <div className="w-10 rounded-full">
 
                     <img
                       data-tooltip-id="name-tooltip"
                       data-tooltip-content={`${user?.displayName || user?.email}`}
+                      referrerPolicy="no-referrer"
                       alt="Tailwind CSS Navbar component"
                       src=
                       {
@@ -95,27 +109,24 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                <ul
-                  tabIndex={0}
-                  className="mt-3 z-[2] p-2 shadow-2xl menu menu-sm dropdown-content bg-gray-100 rounded-box w-64">
-                  <li >
-                    <p className="flex justify-center items-center">
-                      Hi, <span className=" text-blue-500 font-serif">
-                        {
-                          user?.displayName || user?.email
-                        }
-                      </span>
-                    </p>
-                  </li>
-                  <div className="divider divider-secondary my-0" ></div>
-                  {list}
-                  <li
-                    className="rounded-xl p-2 m-2 text-right hover:bg-neutral hover:text-white animate-pulse"
-                    onClick={loggedOut}
-                  >
-                    Logout
-                  </li>
-                </ul>
+                {dropdown && (
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 z-[2] p-2 shadow-2xl menu menu-sm dropdown-content bg-gray-100 rounded-box w-64">
+                    <li >
+                      <p className="flex justify-center items-center">
+                        Hi, <span className=" text-blue-500 font-serif">
+                          {
+                            user?.displayName || user?.email
+                          }
+                        </span>
+                      </p>
+                    </li>
+                    <div className="divider divider-secondary my-0" ></div>
+                    {list}
+                  </ul>
+                )}
+
 
               </div>
 
@@ -123,28 +134,9 @@ const Navbar = () => {
                 className="btn btn-outline text-center rounded-3xl hover:bg-neutral animate-pulse hover:text-white hover:border-0 hover:animate-none"
               >
                 <GoPerson />
-                </Link>
+              </Link>
           }
-          {/* <div
-            tabIndex={0}
-            role='button'
-            className='btn btn-ghost btn-circle avatar'
-          >
-            <div className='w-10 rounded-full' title=''>
-              <img
-                referrerPolicy='no-referrer'
-                alt='User Profile Photo'
-                src=''
-              />
-            </div>
-          </div>
 
-          <ul
-            tabIndex={0}
-            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
-          >
-            {list}
-          </ul> */}
         </div>
 
         <div>
